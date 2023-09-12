@@ -1,0 +1,69 @@
+<form [formGroup]="documentSearchForm" (ngSubmit)="onSubmit(documentSearchForm)">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                Reference: <input formControlName="documentNumber" placeholder="Enter reference">
+            </div>
+            <div class="col-sm">
+                Quantity: <select formControlName="quotation">
+                    <option>BRL</option>
+                    <option>USD</option>
+                    <option>PEN</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Initial Date: <input formControlName="initDate" type="date">
+                        </div>
+                        <div class="col">
+                            Initial Date: <input formControlName="finalDate" type="date">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" (click)="clearForm()">Clear</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+<table>
+    <tr>
+        <th>Document Number</th>
+        <th>Document Date</th>
+        <th>Currency Code</th>
+        <th>Currency Desc</th>
+        <th>Document Value</th>
+        <th>Value USD</th>
+        <th>Value BRL</th>
+        <th>Value PEN</th>
+    </tr>
+    <tr *ngFor="let document of filteredDocuments">
+        <td>{{document.documentNumber}}</td>
+        <td>{{document.documentDate}}</td>
+        <td>{{document.currencyCode}}</td>
+        <td>{{document.currency.currencyDesc}}</td>
+        <td>{{document.documentValue}}</td>
+        <td>{{document.quotations[0] ? (document.quotations[0].cotacao * document.documentValue).toFixed(2) : ''}}</td>
+        <td>{{document.quotations[2] ? (document.quotations[2].cotacao * document.documentValue).toFixed(2) : ''}}</td>
+        <td>{{document.quotations[1] ? (document.quotations[1].cotacao * document.documentValue).toFixed(2) : ''}}</td>
+    </tr>
+</table>
