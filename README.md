@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# WK Technology Test
-=======
 # WK Technology
->>>>>>> df1a8f3b1708e15284595b13eb4b7f79ef54c22b
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
